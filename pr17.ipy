@@ -1,0 +1,22 @@
+import numpy as np
+from scipy.stats import ttest_1samp
+
+# Sample data
+data = [48, 52, 50, 47, 49, 51, 53, 50, 48, 52]
+
+# Hypothesized population mean
+mu = 50
+
+# One Sample t-Test
+t_stat, p_value = ttest_1samp(data, mu)
+
+print("t-statistic =", round(t_stat, 4))
+print("p-value =", round(p_value, 4))
+
+# Significance level
+alpha = 0.05
+
+if p_value < alpha:
+    print("Reject Null Hypothesis (H0)")
+else:
+    print("Fail to Reject Null Hypothesis (H0)")
