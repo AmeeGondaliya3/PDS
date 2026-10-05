@@ -1,0 +1,26 @@
+# try,expect,ese and fnally
+try:
+    n1 = 10
+    n2 = 2
+    r = n1 / n2
+except ZeroDivisionError:
+    print("Error: Can't Divide by zero")
+else:
+    print("Result: ", r)
+finally:
+    print("Execution completed")
+
+# user define and raise
+class AgeError(Exception):
+    pass
+
+try:
+    age = 15
+    if age < 18:
+        raise AgeError("Age must be 18 or above")
+except AgeError as c:
+    print("Custom Exception: ", c)
+else:
+    print("You are eligible")
+finally:
+    print("Program Completed")
