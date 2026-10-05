@@ -1,0 +1,40 @@
+import pandas as pd
+
+df = pd.read_csv("employee.csv")
+
+print("Top 5 Records:", df.head())
+print("Bottom 5 Records:", df.tail())
+
+print(
+    "Integer Datatype Columns:",
+    df.select_dtypes(include=["object"]).columns,
+)
+
+print("Maximum Monthly Income:", df["MonthlyIncome"].max())
+print("Minimum Monthly Income:", df["MonthlyIncome"].min())
+
+print("Measure of Central Tendency:")
+print("Mean of Monthly Income:", df["MonthlyIncome"].mean())
+print("Median of Monthly Income:", df["MonthlyIncome"].median())
+print("Mode of Monthly Income:", df["MonthlyIncome"].mode()[0])
+
+print("Measure of spread:")
+print( "Range of Monthly Income:",df["MonthlyIncome"].max() - df["MonthlyIncome"].min(),)
+print("Variance:", round(df["MonthlyIncome"].var(), 2))
+print("Standard Deviation:", round(df["MonthlyIncome"].std(), 2))
+
+q1 = df["MonthlyIncome"].quantile(0.25)
+q2 = df["MonthlyIncome"].quantile(0.50)
+q3 = df["MonthlyIncome"].quantile(0.75)
+iqr = q3 - q1
+
+print("Quantile 1 (25%):", q1)
+print("Quantile 2 (50%):", q2)
+print("Quantile 3 (75%):", q3)
+print("Interquartile Range:", iqr)
+
+print("Correlation coefficient:")
+print(
+    "Age vs Monthly Income:",
+    df["Age"].corr(df["MonthlyIncome"]),
+)
