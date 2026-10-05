@@ -1,0 +1,42 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import binom, poisson
+
+# -----------------------------
+# Binomial Distribution
+# -----------------------------
+n = 10          # Number of trials
+p = 0.5         # Probability of success
+
+x_binom = np.arange(0, n + 1)
+y_binom = binom.pmf(x_binom, n, p)
+
+# -----------------------------
+# Poisson Distribution
+# -----------------------------
+lam = 4         # Mean rate (λ)
+
+x_poisson = np.arange(0, 15)
+y_poisson = poisson.pmf(x_poisson, lam)
+
+# -----------------------------
+# Plot Binomial Distribution
+# -----------------------------
+plt.figure(figsize=(8, 5))
+plt.bar(x_binom, y_binom)
+plt.title("Binomial Distribution (n=10, p=0.5)")
+plt.xlabel("Number of Successes")
+plt.ylabel("Probability")
+plt.grid(True)
+plt.show()
+
+# -----------------------------
+# Plot Poisson Distribution
+# -----------------------------
+plt.figure(figsize=(8, 5))
+plt.bar(x_poisson, y_poisson)
+plt.title("Poisson Distribution (λ=4)")
+plt.xlabel("Number of Events")
+plt.ylabel("Probability")
+plt.grid(True)
+plt.show()
