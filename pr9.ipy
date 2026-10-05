@@ -1,0 +1,30 @@
+import pandas as pd
+
+#data collection
+df = pd.read_csv("employee.csv")
+print(df.head())
+
+#data understanding
+print("Dataset shape:", df.shape)
+
+#data preparation
+print("Missing values:", df.isnull().sum())
+print("Duplicates Records:", df.duplicated().sum())
+df = df.drop_duplicates()
+print("Shape after removing duplicates:", df.shape)
+
+#data Exploratory data analysis
+print("Univariate Analysis:")
+print("YearsAtCompany:", df["YearsAtCompany"].describe())
+
+print("Bivariate Analysis:")
+print(df[["MonthlyIncome", "JobLevel"]].describe())
+print("Correlation between both columns:",
+      df["MonthlyIncome"].corr(df["JobLevel"]))
+
+print("Multivariate Analysis:")
+cols = ["TotalWorkingYears", "YearsSinceLastPromotion", "YearsWithCurrManager"]
+print(df[cols].describe())
+
+correlation = df[cols].corr()
+print("Correlation Matrix:", correlation)
