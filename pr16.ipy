@@ -1,0 +1,42 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm, expon
+
+# Normal Distribution
+x = np.linspace(-4, 4, 1000)
+normal_pdf = norm.pdf(x, loc=0, scale=1)
+
+plt.figure(figsize=(8,5))
+plt.plot(x, normal_pdf)
+plt.title("Normal Distribution")
+plt.xlabel("x")
+plt.ylabel("Probability Density")
+plt.grid(True)
+plt.show()
+
+# Exponential Distribution
+x_exp = np.linspace(0, 10, 1000)
+exp_pdf = expon.pdf(x_exp, scale=1)
+
+plt.figure(figsize=(8,5))
+plt.plot(x_exp, exp_pdf)
+plt.title("Exponential Distribution")
+plt.xlabel("x")
+plt.ylabel("Probability Density")
+plt.grid(True)
+plt.show()
+
+# Central Limit Theorem Demonstration
+sample_means = []
+
+for i in range(1000):
+    sample = np.random.exponential(scale=1, size=30)
+    sample_means.append(np.mean(sample))
+
+plt.figure(figsize=(8,5))
+plt.hist(sample_means, bins=30, density=True)
+plt.title("Central Limit Theorem")
+plt.xlabel("Sample Mean")
+plt.ylabel("Density")
+plt.grid(True)
+plt.show()
